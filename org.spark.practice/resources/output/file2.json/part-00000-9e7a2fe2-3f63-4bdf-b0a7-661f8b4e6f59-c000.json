@@ -1,0 +1,15 @@
+{"_corrupt_record":"{"}
+{"_corrupt_record":"    \"firstName\": \"Rack\","}
+{"_corrupt_record":"    \"lastName\": \"Jackon\","}
+{"_corrupt_record":"    \"gender\": \"man\","}
+{"_corrupt_record":"    \"age\": 24,"}
+{"_corrupt_record":"    \"address\": {"}
+{"_corrupt_record":"        \"streetAddress\": \"126\","}
+{"_corrupt_record":"        \"city\": \"San Jone\","}
+{"_corrupt_record":"        \"state\": \"CA\","}
+{"_corrupt_record":"        \"postalCode\": \"394221\""}
+{"_corrupt_record":"    },"}
+{"_corrupt_record":"    \"phoneNumbers\": ["}
+{"number":"7383627627","type":"home"}
+{"_corrupt_record":"    ]"}
+{"_corrupt_record":"}"}
