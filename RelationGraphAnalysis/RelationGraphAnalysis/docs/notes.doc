@@ -1,0 +1,143 @@
+﻿
+Note: This project is refered from Book:Mastering Apache Spark by Mike Frampton
+
+
+Input is As below:
+
+
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Input files
+
+1.relation_vertex.csv
+
+1,Mike,48
+2,Sarah,45
+3,John,25
+4,Jim,53
+5,Kate,22
+6,Flo,52
+
+
+
+2. relation_edges.csv
+
+6,1,Sister
+1,2,Husband
+2,1,Wife
+5,1,Daughter
+5,2,Daughter
+3,1,Son
+3,2,Son
+4,1,Friend
+1,5,Father
+1,3,Father
+2,5,Mother
+2,3,Mother
+
+
+
+
+
+
+
+
+Output : 
+
+   --------------------------------------------------------------------------------
+    1. Create Graph using Graphx module
+    --------------------------------------------------------------------------------
+    
+	How many vertices?: 6
+	How many edges?: 12
+
+    --------------------------------------------------------------------------------
+    2. Graph subgraph and filtering
+    --------------------------------------------------------------------------------
+    
+	Subgraph with age more than 40.vertices cound: 4
+	Subgraph with relation Mother and father. edges cound: 0
+
+    -------------------------------------------------------------------------------------
+    3. Apply PageRank algorithm
+    --------------------------------------------------------------------------------
+    The PageRank algorithm provides a ranking value for each of the vertices in a graph.
+    It makes the assumption that the vertices that are connected to the most edges are the
+    most important ones. 
+    Search engines use PageRank to provide ordering for the page display during a web search
+    --------------------------------------------------------------------------------
+    
+	Rank 0.15  id 4 person Jim
+	Rank 1.82  id 1 person Mike
+	Rank 0.15  id 6 person Flo
+	Rank 1.13  id 3 person John
+	Rank 1.13  id 5 person Kate
+	Rank 1.62  id 2 person Sarah
+
+    --------------------------------------------------------------------------------
+    4. Apply Triangle Counting algorithm
+   --------------------------------------------------------------------------------
+    - count of the number of triangles, associated with this vertex.
+    
+	 Vertex 4 has triangle count:0
+	 Vertex 1 has triangle count:2
+	 Vertex 6 has triangle count:0
+	 Vertex 3 has triangle count:1
+	 Vertex 5 has triangle count:1
+	 Vertex 2 has triangle count:2
+
+    --------------------------------------------------------------------------------
+    5. Apply Connected Component algorithm
+    --------------------------------------------------------------------------------
+    -subgraph in which any two vertices are connected to each other by paths, 
+    and which is connected to no additional vertices in the supergraph.
+    
+    -When a large graph is created from the data, it might contain unconnected
+    subgraphs, that is, subgraphs that are isolated from each other, and contain no
+    bridging or connecting edges between them. 
+    
+    -This algorithm provides a measure of this connectivity. 
+    It might be important, depending upon your processing, to know that all the vertices are connected.
+
+    
+	Weak Conn comp 1 id:4 person:Jim
+	Weak Conn comp 1 id:1 person:Mike
+	Weak Conn comp 1 id:6 person:Flo
+	Weak Conn comp 1 id:3 person:John
+	Weak Conn comp 1 id:5 person:Kate
+	Weak Conn comp 1 id:2 person:Sarah
+
+
+
+	Strong Conn comp 4 id:4 person:Jim
+	Strong Conn comp 1 id:1 person:Mike
+	Strong Conn comp 6 id:6 person:Flo
+	Strong Conn comp 1 id:3 person:John
+	Strong Conn comp 1 id:5 person:Kate
+	Strong Conn comp 1 id:2 person:Sarah
+
+-----------------------END------------------------------------------
+
