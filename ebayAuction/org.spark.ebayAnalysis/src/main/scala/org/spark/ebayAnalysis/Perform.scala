@@ -50,11 +50,14 @@ object Perform {
   
     
       // register the DataFrame as a temp table
-    srcDF.registerTempTable("auction")
-    // How many bids per auction?
-    val results = spark.sql(
-    "SELECT auctionid, item, count(bid) FROM auction GROUP BY auctionid, item")
+    srcDF.createOrReplaceTempView("auction")
     
+    // How many bids per auction?
+    val results = spark.sql("""
+     SELECT auctionid, item, count(bid) 
+    FROM auction GROUP BY auctionid, item
+    """)
+
     // display dataframe in a tabular format
     results.show()
     val results2 = spark.sql("SELECT auctionid, MAX(price) FROM auction GROUP BY item,auctionid")

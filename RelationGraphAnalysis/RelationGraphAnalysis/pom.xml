@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>spark-tutorials</groupId>
-  <artifactId>org.spark.practice</artifactId>
+  <groupId>RelationGraphAnalysis</groupId>
+  <artifactId>RelationGraphAnalysis</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>org.spark.practice</name>
+  <name>RelationGraphAnalysis</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,17 +15,18 @@
   </properties>
 
   <dependencies>
+  
    <dependency>
     <groupId>org.apache.spark</groupId>
     <artifactId>spark-core_2.12</artifactId>
     <version>2.4.2</version>
-</dependency>   
+	</dependency>   
     
    <dependency>
     <groupId>org.apache.spark</groupId>
     <artifactId>spark-sql_2.12</artifactId>
     <version>2.4.2</version>
-</dependency>
+	</dependency>
 
 <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-graphx -->
 <dependency>
@@ -35,12 +36,13 @@
 </dependency>
 
 
-<!-- https://mvnrepository.com/artifact/com.univocity/univocity-parsers -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+ 
   </dependencies>
+  
 </project>
