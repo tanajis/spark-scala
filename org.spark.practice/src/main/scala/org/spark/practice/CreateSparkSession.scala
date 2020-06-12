@@ -17,6 +17,9 @@ object CreateSparkSession {
           .getOrCreate()
          
   
+    // Change log level avoid unrequired logs so as to have better visibility to out output.
+    spark.sparkContext.setLogLevel("ERROR")
+    
     // New Way of creating SparkCOntext
      val sc =spark.sparkContext
      val array = Array(3,4,5,6,7)

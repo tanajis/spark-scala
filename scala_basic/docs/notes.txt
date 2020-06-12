@@ -1,0 +1,98 @@
+
+https://www.tutorialspoint.com/scala/index.htm
+
+- scala is based on java.
+- Object:instance of class . has states,behavior,
+- class:template or blue print
+- methods : behavior
+- fields:state. static instance variables of object
+- Closure − function, return value depends on variables declared outside this function.
+- Traits: encapsulates method and field definitions, 
+	which can then be reused by mixing them into classes. 
+	Traits are used to define object types by specifying the signature of the 
+	supported methods.
+	
+- Two modes : Interactive and script
+- scala is case sensitive
+- class name : first letter upper Ex.  TransactionProcessor, MyFirstScalaClass etc.
+- method names: start with lower case ex.myMethodName()
+- program file name : file name must exactly equal to Object name and append ".scala"
+- Executions starts at def main(args[String]) .Put this inside object 
+
+- Identifiers : start with letter or undescore followby number/char/underscore
+	Allowed : age, salary, _value,  __1_value
+	not Allowed : $salary, 123abc, -salary
+	
+	Operator Identifiers : Ex.	+ ++ ::: <?> :>
+	Mixed Identifiers	 : Ex.  unary_+,  myvar_=
+	Literal Identifiers  : Ex. `x` `<clinit>` `yield`
+	
+-comment \\ 	and 		\* comments *\
+- package : named module 
+	declare :package com.liftcode.stuff
+	import  :import com.liftcode.stuff
+	import all : import com.liftcode._
+	import one class :import scala.collection.mutable.HashMap
+	import multiple:  import scala.collection.immutable.{TreeMap, TreeSet}
+	
+--Apply dynamic -marker trait --need to check in details
+
+
+--Data types : Same as JAVA
+  - Byte,Short,Int,Long,Float,Double,Char,String,Boolean,Null
+  - Unit,nothing,Any,AnyRef
+	
+	35 --int
+	21L --long
+	1.998 --double
+	1.998F or f --float
+	
+	Boolean : true and false
+	
+	Symbol("+")
+	
+	String
+		-single line : "abbccc"
+		-multiple line: 
+		a = """"
+		xweiubr
+		currr
+		"""
+	escape " \t,\b,\n,\",\',\\,\f
+--------------
+Variables
+- 	Declare with "var/val" and assign value with "val"
+-	variables declared as value that is val
+	var myVar :Int;
+	val myVal :String;
+- declare and define both with val
+  Ex. val a = "jdbuf"  \\Define without type
+  Ex. val b:String ="foo"  \\Define with type
+  
+
+Variable scope:
+1.fields: variable of an object.
+	- all methods inside object can access
+	- from outside object it depends on modifiers
+	-Define using val or var both
+2.Method parameters
+	-used to pass the value inside a method
+	-accessible inside method only
+	-always define only by val only
+	-mutable
+3.Local Variables
+	-declared inside method
+	-accesible only from inside method
+	-may be accessed by outside when you return them to something
+	-can be  
+-------------
+
+Running
+
+scala MyFirstProgram.scala
+or 
+scala MyFirstProgram
+
+---------------------------------------------------------------
+Classes and Object
+

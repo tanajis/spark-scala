@@ -22,6 +22,9 @@ object DataframeDemo {
     .getOrCreate()
  
 
+    // Change log level avoid unrequired logs so as to have better visibility to out output.
+    spark.sparkContext.setLogLevel("ERROR")
+     
     // 1.Create Dataframe from RDD 
     print("1. Create Dataframe from RDD")
     val sc = spark.sparkContext

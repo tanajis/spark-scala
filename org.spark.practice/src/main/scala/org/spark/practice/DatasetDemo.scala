@@ -10,6 +10,9 @@ object DatasetDemo extends App{
     .master("local")
     .getOrCreate()
     
+    // Change log level avoid unrequired logs so as to have better visibility to out output.
+    spark.sparkContext.setLogLevel("ERROR")
+    
     //-------Create Case class.-------------------------------
     //1. It must be declared inside Object
     //2. No main method needed
