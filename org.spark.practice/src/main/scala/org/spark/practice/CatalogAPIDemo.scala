@@ -1,5 +1,6 @@
 package org.spark.practice
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.types.{StructType,StructField,IntegerType,StringType}
 
 /* This is demonstration of spark Catalog API. 
  * If hive support is enabled then hive metastore is showed as catalog otherwise it shows
@@ -26,7 +27,7 @@ object CatalogAPIDemo extends App {
       
       println("List Database:")
       catalog.listDatabases.show()
-      println("List Database:")
+      println("List Functions:")
       catalog.listFunctions.show()
       
       println("Set Current Database:")
@@ -42,13 +43,19 @@ object CatalogAPIDemo extends App {
       
       println("Check if DB exist:"+ catalog.databaseExists("staging"))
       println("Check if DB exist:"+ catalog.functionExists(dbName="staging", functionName ="calcDiff"))
+      
       println("Create DB")
       //catalog.create
       
-      println("Create Table")
-      //catalog.createTable(tableName="mytable2", path, source)
+      println("Create Table using catalog.createTable Method")
+      val schema1 = StructType(
+        StructField("Id",IntegerType,true)::
+        StructField("Name",StringType,true)::Nil
+      )
       
-      
+      catalog.createTable(tableName="mytable2", source ="parquet", schema =schema1,options=
+        Map("Comments" -> "Table Created using spark catalog"))
+        
       println("Get Table")
       val t1 = catalog.getTable(dbName="staging", tableName="classdata")
       
