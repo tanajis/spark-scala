@@ -52,21 +52,37 @@ object HiveFromSpark {
         
       df4.show(2)
       println("Save As Hive table.")
+      
+      println("DROP Table if already exist using spark.sql method.")
+      spark.sql("DROP TABLE IF EXISTS emp_data_usingSpark")
+      // If mode is overwrite, it throws error if table is already exist
+      // So we need to make sure that if table already exist, drop it or keep mode append
       df4.write.mode(SaveMode.Overwrite).saveAsTable("emp_data_usingSpark")
       
+      /* Even if we drop external table, path is still exist and hence it throws below error:
+       * Exception in thread "main" org.apache.spark.sql.AnalysisException: Can not create the managed table('`emp_data_usingSpark`'). The associated location('hdfs://localhost:54310/user/hive/warehouse/emp_data_usingspark') already exists.;
+       * 
+       * Thus before running this application,Delete path with below hdfs cammand
+       * hdfs dfs -rm -R hdfs://localhost:54310/user/hive/warehouse/emp_data_usingspark
+       * 
+       */
       // Create Partitioned tables in hive
       println("Save as hive partitioned Table")
       df4.write.partitionBy("deptno").mode(SaveMode.Overwrite).saveAsTable("emp_data_usingSpark")      
       
       
+
       // Create External Table in Hive
       println("Save as hive Exernal partitioned Table")
       df4.write
       .partitionBy("deptno")
       .option("path", "hdfs://localhost:54310/myexternalTables")
       .mode(SaveMode.Overwrite)
-      .saveAsTable("emp_data_usingSpark")      
+      .saveAsTable("emp_data_usingSpark2")      
      
+      
+      
+      println("Spark InserInto method")
       /*
        * InserInto method
        * 1.table must be already present in the hive
@@ -75,8 +91,8 @@ object HiveFromSpark {
        * Df2 = DF1.select("col1,col2,col3")
        */
 
+       df4.write.mode(SaveMode.Append).insertInto(tableName="emp_data_usingSpark")
        
-       df4.write
       println("---End-----")
   
   }
