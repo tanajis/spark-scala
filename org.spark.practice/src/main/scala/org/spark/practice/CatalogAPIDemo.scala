@@ -2,12 +2,15 @@ package org.spark.practice
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.{StructType,StructField,IntegerType,StringType}
 
-/* This is demonstration of spark Catalog API. 
+/* ****************************************************************************
+ * This is demonstration of spark Catalog API. 
  * If hive support is enabled then hive metastore is showed as catalog otherwise it shows
  * Spark's default catalog
  * With Catalog, we can fire sql to create,view ,list table,db, functions etc.
  * 
- */
+ * @Auther : Tanaji Sutar
+ * @Date	 : 18-06-2020
+ ******************************************************************************/
 
 
 object CatalogAPIDemo extends App {
