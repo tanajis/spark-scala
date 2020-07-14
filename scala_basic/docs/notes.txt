@@ -96,3 +96,48 @@ scala MyFirstProgram
 ---------------------------------------------------------------
 Classes and Object
 
+- A class is a blueprint for objects
+- create objects from the class with the keyword new
+- Object can use all functionalities of class
+- name of the file must be name of the object
+Ex. Student is class
+	rollno & name are the variable/attributes of class
+	setRollNo,getRollNo,getName are the methodes of the class
+	Create object john as below
+	val john = new Student()
+	
+	similarly object might be multiple like mery, martin, robert etc.
+
+- Extending a Class
+	-use extends key word
+	- two restrictions
+	1.method overriding requires the override keyword,
+	2.only the primary constructor can pass parameters to the base constructor
+	
+	-extend keyword inherit all non-private members of parent class and create subtype class of parent class
+	
+Note − in program InheritanceDemo.scala Methods move() method in Point class and 
+move() method in Location class do not override the corresponding definitions of move since they are different definitions (for example, the former take two arguments while the latter take three arguments).
+
+
+# imlicite classes:
+- Implicit classes allow implicit conversations with class’s primary constructor 
+when the class is in scope
+- ‘implicit’ keyword
+- introduced in Scala 2.10.
+- Implicit classes must be defined inside another class/object/trait (not in top level).
+- Implicit classes may only take one non –implicit argument in their constructor.
+- Implicit classes may not be any method, member or object in scope with the same
+ name as the implicit class.
+
+- Syntax
+
+object <object name> {
+   implicit class <class name>(<Variable>: Data type) {
+      def <method>(): Unit =
+   }
+}
+
+--------------------------------------------------------------------
+# Singleton Objects
+
