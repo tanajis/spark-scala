@@ -35,7 +35,7 @@ object SparkUDFUsingCurry {
     
     diffData.show()
     
-    println("Scala Curry function UDF with column as well as constan/parameter.")
+    println("Scala Curry function UDF with column as well as constant/parameter.")
     def amtcalc(k:Int): UserDefinedFunction = udf( (v1:Int) => {v1 * k}  )
     val k = 3
     val amtData2 = df.withColumn("amt", amtcalc(3)(df("col2")))
