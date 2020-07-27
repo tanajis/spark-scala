@@ -2,7 +2,6 @@
  * @Auther : Tanaji Sutar
  * @Date	 : 21-07-2020
  * @Desc	 : This is demo of spark Streaming Context.
- * Accumulators can be used for only associative and cumulative operations.
  * 1. We need to add dependency in maven : spark-streaming_2.12
  * 2. To generate stream of word as input, go to terminal and run  cammand:  nc -lk 9999
  * 3. we need to start spark context and for stopping we give awaitfor stop means 
