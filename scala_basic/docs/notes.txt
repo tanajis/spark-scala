@@ -202,3 +202,75 @@ object Demo {
    }
 }
 
+
+------------------
+Access modifiers:
+
+- private or protected.
+- if no, default is public
+1. Private members:
+	- visible ponly inside the class/object where it is declared.
+	
+class Outer {
+   class Inner {
+      private def f() { println("f") }      
+      class InnerMost {
+         f() // OK
+      }
+   }
+   (new Inner).f() // Error: f is not accessible
+}
+
+
+2. Protected members:
+- only accessible from subclasses of the class in which the member is defined.
+
+package p {
+   class Super {
+      protected def f() { println("f") }
+   }
+   
+   class Sub extends Super {
+      f()
+   }
+   
+   class Other {
+      (new Super).f() // Error: f is not accessible
+   }
+}
+
+
+3.Public
+	- default. No need to specify
+	- can be accessed from anywhere.
+	
+class Outer {
+   class Inner {
+      def f() { println("f") }
+      
+      class InnerMost {
+         f() // OK
+      }
+   }
+   (new Inner).f() // OK because now f() is public
+}
+
+
+# Scope of protection
+- parameters to private and public
+- scope-up-to  : need to pass class name /singalton object name/package name etc like  Private(classname)
+
+package society {
+   package professional {
+      class Executive {
+         private[professional] var workDetails = null
+         private[society] var friends = null
+         private[this] var secrets = null
+
+         def help(another : Executive) {
+            println(another.workDetails)
+            println(another.secrets) //ERROR
+         }
+      }
+   }
+}
