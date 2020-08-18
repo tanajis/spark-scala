@@ -183,4 +183,22 @@ HI
 
 --------------------------------------------------------------------
 # Singleton Objects
+-- scala dont have static mebers so more Object oriented than java. Scala have singleton objects instead
+-- it is a class that can have only one instance/object
+-- Just use Object , instead of class
+
+Ex
+
+
+object Demo {
+   def main(args: Array[String]) {
+      val point = new Point(10, 20)
+      printPoint
+
+      def printPoint{
+         println ("Point x location : " + point.x);
+         println ("Point y location : " + point.y);
+      }
+   }
+}
 
