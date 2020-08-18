@@ -274,3 +274,93 @@ package society {
       }
    }
 }
+
+
+----------
+
+Operators 
+Arithmetic: + ,-,*,/,%
+Relational : ==,>=,<=,>,<,!=
+Logical: &&,||,!
+Bitwise : and &, or |,XOR ^, binary complement ~, 
+
+Assignment : =,+=,-=,*=,/=.
+
+--------
+
+If else:
+
+if(Boolean_expression){
+   //Executes when the Boolean expression is true
+} else{
+   //Executes when the Boolean expression is false
+}
+else{
+   //Executes when the Boolean expression is false
+}
+
+
+Loops:
+1. While
+while(condition){
+   statement(s);
+}
+
+2. Do While:
+do {
+   statement(s);
+} 
+while( condition );
+
+3. for loop
+
+for( a <-  1 to 10){
+ println( "Value of a: " + a );
+}
+
+=======================================================================
+
+Scala is functional programming language:
+
+function syntax:
+
+def functionName ([list of parameters]) : [return type] = {
+   function body
+   return [expr]
+}
+
+Ex. 
+object add {
+   def addInt( a:Int, b:Int ) : Int = {
+      var sum:Int = 0
+      sum = a + b
+      return sum
+   }
+}
+
+
+Imp Note :
+- A function, that does not return anything can return a Unit
+- Unit is equivalent to void in Java
+- The functions which do not return anything in Scala, they are called procedures.
+
+object Hello{
+   def printMe( ) : Unit = {
+      println("Hello, Scala!")
+   }
+}
+
+----
+object Demo {
+   def main(args: Array[String]) {
+      println( "Returned Value : " + addInt(5,7) );
+   }
+   
+   def addInt( a:Int, b:Int ) : Int = {
+      var sum:Int = 0
+      sum = a + b
+      return sum
+   }
+}
+
+=======================================================================
