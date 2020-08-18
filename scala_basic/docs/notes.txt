@@ -394,8 +394,191 @@ print(t)
 }
 
 -----------------------------------------------------------------
+Scala - Function with Variable Arguments
+-----------------------------------------------------------------
+Scala allows you to indicate that the last parameter to a function may be repeated. This allows clients to pass variable length argument lists to the function. Here, the type of args inside the print Strings function, which is declared as type "String*" is actually Array[String].
+
+object Demo {
+   def main(args: Array[String]) {
+      printStrings("Hello", "Scala", "Python");
+   }
+   
+   def printStrings( args:String* ) = {
+      var i : Int = 0;
+      
+      for( arg <- args ){
+         println("Arg value[" + i + "] = " + arg );
+         i = i + 1;
+      }
+   }
+}
+
+output:
+Arg value[0] = Hello
+Arg value[1] = Scala
+Arg value[2] = Python
+-----------------------------------------------------------------
+Scala - Functions with Named Arguments
+-----------------------------------------------------------------
+
+In a normal function call, the arguments in the call are matched one by one in the order of the parameters of the called function. Named arguments allow you to pass arguments to a function in a different order. 
+The syntax is simply that each argument is preceded by a parameter name and an equals sign.
+
+object Demo {
+   def main(args: Array[String]) {
+      printInt(b = 5, a = 7);
+   }
+   
+   def printInt( a:Int, b:Int ) = {
+      println("Value of a : " + a );
+      println("Value of b : " + b );
+   }
+}
+
+Output:
+Value of a :  7
+Value of b :  5
+
+-----------------------------------------------------------------
+Scala - Functions with Default parameter value
+-----------------------------------------------------------------
+Scala lets you specify default values for function parameters. The argument for such a parameter can optionally be omitted from a function call, in which case the corresponding argument will be filled in with the default. If you specify one of the parameters, then first argument will be passed using that parameter and second will be taken from default value.
 
 
+object Demo {
+   def main(args: Array[String]) {
+      println( "Returned Value : " + addInt() );
+   }
+   
+   def addInt( a:Int = 5, b:Int = 7 ) : Int = {
+      var sum:Int = 0
+      sum = a + b
+
+      return sum
+   }
+}
+
+Output:
+Returned Value : 12
+
+-----------------------------------------------------------------
+Scala - Nested Functions
+-----------------------------------------------------------------
+Scala allows you to define functions inside a function and functions defined inside other functions are called local functions.
+- both declaration and use in oarent function.
+
+object Demo {
+   def main(args: Array[String]) {
+      println( factorial(0) )
+      println( factorial(1) )
+      println( factorial(2) )
+      println( factorial(3) )
+   }
+
+   def factorial(i: Int): Int = {
+      def fact(i: Int, accumulator: Int): Int = {
+         if (i <= 1)
+            accumulator
+         else
+            fact(i - 1, i * accumulator)
+      }
+      fact(i, 1)
+   }
+}
+
+-----------------------------------------------------------------
+Scala - Partiallu applied functions
+-----------------------------------------------------------------
+
+https://www.tutorialspoint.com/scala/partially_applied_functions.htm
+
+
+-----------------------------------------------------------------
+Scala - Partiallu applied functions
+-----------------------------------------------------------------
+
+object Demo {
+   def main(args: Array[String]) {
+      for (i <- 1 to 10)
+         println( "Factorial of " + i + ": = " + factorial(i) )
+   }
+   
+   def factorial(n: BigInt): BigInt = {  
+      if (n <= 1)
+         1  
+      else    
+      n * factorial(n - 1)
+   }
+}
+
+-----------------------------------------------------------------
+Scala - Higher-Order Functions
+-----------------------------------------------------------------
+Scala allows the definition of higher-order functions. 
+These are functions that take other functions as parameters, or whose result is a function.
+
+
+object Demo {
+   def main(args: Array[String]) {
+      println( apply( layout, 10) )
+   }
+
+   def apply(f: Int => String, v: Int) = f(v)  //<-----------------------------High order
+
+   def layout[A](x: A) = "[" + x.toString() + "]"  //<-------------------------Lower order
+}
+
+Output:
+[10]
+
+-----------------------------------------------------------------
+Scala - Anonymous Functions
+-----------------------------------------------------------------
+
+Scala provides a relatively lightweight syntax for defining anonymous functions. Anonymous functions in source code are called function literals and at run time, function literals are instantiated into objects called function values.
+
+Scala supports first-class functions, which means functions can be expressed in function literal syntax, i.e., (x: Int) => x + 1, and that functions can be represented by objects, which are called function values.
+Ex.
+var inc = (x:Int) => x+1
+var x = inc(7)-1
+
+also,
+var mul = (x: Int, y: Int) => x*y
+println(mul(3, 4))
+
+---with no param:
+var userDir = () => { System.getProperty("user.dir") }
+println( userDir )
+
+-----------------------------------------------------------------
+Scala - Currying Functions
+-----------------------------------------------------------------
+Currying transforms a function that takes multiple parameters into a chain of functions, each taking a single parameter. 
+Curried functions are defined with multiple parameter lists, as follows −
+
+Define this way:
+def strcat(s1: String)(s2: String) = s1 + s2
+OR
+def strcat(s1: String) = (s2: String) => s1 + s2
+
+
+Call this way:
+strcat("foo")("bar")
+
+Example:
+
+object Demo {
+   def main(args: Array[String]) {
+      val str1:String = "Hello, "
+      val str2:String = "Scala!"
+      
+      println( "str1 + str2 = " +  strcat(str1)(str2) )
+   }
+
+   def strcat(s1: String)(s2: String) = {
+      s1 + s2
+   }
+}
 
 
 
