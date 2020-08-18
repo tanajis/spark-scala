@@ -121,14 +121,30 @@ move() method in Location class do not override the corresponding definitions of
 
 
 # imlicite classes:
+- 
 - Implicit classes allow implicit conversations with class’s primary constructor 
 when the class is in scope
 - ‘implicit’ keyword
 - introduced in Scala 2.10.
 - Implicit classes must be defined inside another class/object/trait (not in top level).
+	object Helpers {
+	   implicit class RichInt(x: Int) // OK!
+	}
+	implicit class RichDouble(x: Double) // BAD!
 - Implicit classes may only take one non –implicit argument in their constructor.
+	implicit class RichDate(date: java.util.Date) // OK!
+	implicit class Indexer[T](collection: Seq[T], index: Int) // BAD!
+	implicit class Indexer[T](collection: Seq[T])(implicit index: Index) // OK!
+
 - Implicit classes may not be any method, member or object in scope with the same
  name as the implicit class.
+	 object Bar
+	implicit class Bar(x: Int) // BAD!
+
+	val x = 5
+	implicit class x(y: Int) // BAD!
+
+	implicit case class Baz(x: Int) // BAD
 
 - Syntax
 
@@ -137,6 +153,33 @@ object <object name> {
       def <method>(): Unit =
    }
 }
+
+Ex.
+object Helpers {
+  implicit class IntWithTimes(x: Int) {
+    def times[A](f: => A): Unit = {
+      def loop(current: Int): Unit =
+        if(current > 0) {
+          f
+          loop(current - 1)
+        }
+      loop(x)
+    }
+  }
+}
+
+
+scala> import Helpers._
+import Helpers._
+
+scala> 5 times println("HI")
+HI
+HI
+HI
+HI
+HI
+
+
 
 --------------------------------------------------------------------
 # Singleton Objects
