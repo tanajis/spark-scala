@@ -364,3 +364,38 @@ object Demo {
 }
 
 =======================================================================
+Scala is function programming language, so Scala functions are the heart of Scala programming.
+-----------------------------------------------------------------
+1. Functions call by name:
+-----------------------------------------------------------------
+Typically all the parameters we pass to function are by values, 
+means value of parameter is determined before it os passed to function.
+
+what if we need to write a function that accepts as a parameter an 
+expression that we don't want evaluated until it's called within our function?
+Here scala offers Scala offers call-by-name parameters for this
+
+- just add "=>" between : and datatype.It means delayed.it is evaluated when actually used.
+
+def showtime(input:Int)  : call by value
+def showtime(input: => Int) : call by name
+
+Example1 : call by name. t will have value beofre wait
+def showtime(t:timestamp) { 
+wait(10)
+print(t)
+}
+
+
+Example2 : call by value. t will have value after wait
+def showtime(t: => timestamp) { 
+wait(10)
+print(t)
+}
+
+-----------------------------------------------------------------
+
+
+
+
+
